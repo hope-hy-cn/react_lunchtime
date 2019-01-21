@@ -12,7 +12,7 @@ const orderList = Mock.mock(
         "amount": "@integer(1,10)",
         "name": "@cname",
         "createAt": "@datetime('T')",
-        "phone": "/^1[1385][1-9]\\d{8}/",
+        'phone': /^1[385][1-9]\d{8}/,
         "address": "@county(true)",
         "orderstatus|1": [
           "待付款",
@@ -26,8 +26,16 @@ const orderList = Mock.mock(
     ]
   }
 )
-router.get('/api/v1/orderList',(req,res) => {
-  res.json(orderList)
-})
+
+router
+  .post('/api/v1/orderList',(req,res) => {
+    res.json(orderList)
+  })
+  .post('/api/v1/order/delete/:id',(req,res) => {
+    res.json({
+      "code": 200,
+      "msg": "删除成功!"
+    })
+  })
 
 module.exports = router

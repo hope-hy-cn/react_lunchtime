@@ -99,9 +99,10 @@ export default class OrderList extends Component {
 
   constructor () {
     super ()
+    this.isComponentMounted =false
     this.state = {
       dataSource: [],
-      isLoading: true
+      isLoading: false
     }
   }
 
@@ -111,6 +112,9 @@ export default class OrderList extends Component {
     })
     this.http.fetchOrderList()
       .then(resp => {
+        if (this.isComponentMounted === false) {
+          return;
+        }
         if (resp.data.code === 200) {
           this.setState({
             dataSource: resp.data.data,
@@ -174,7 +178,12 @@ export default class OrderList extends Component {
   }
 
   componentDidMount() {
+    this.isComponentMounted = true
     this.fetchArticles()
+  }
+
+  componentWillUnmount() {
+    this.isComponentMounted = false
   }
 
   render() {
