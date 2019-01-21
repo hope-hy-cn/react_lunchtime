@@ -7,8 +7,8 @@ const ajax = axios.create({
   baseURL: isDev ? 'http://192.168.199.193:4444' : ''
 })
 
-export const fetchOrderList = () => {
-  return ajax.post('/api/v1/orderList')
+export const fetchOrderList = (params) => {
+  return ajax.post('/api/v1/orderList', params)
 }
 
 export const deleteOrderById = (id) => {

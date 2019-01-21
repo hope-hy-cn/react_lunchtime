@@ -102,6 +102,11 @@ export default class OrderList extends Component {
     this.isComponentMounted =false
     this.state = {
       dataSource: [],
+      totalCount: 0,
+      // 每页显示条数
+      pageSize: 10,
+      // 当前页
+      currentPage: 1,
       isLoading: false
     }
   }
@@ -110,7 +115,11 @@ export default class OrderList extends Component {
     this.setState({
       isLoading: true
     })
-    this.http.fetchOrderList()
+    this.http.fetchOrderList({
+      offset: (this.state.currentPage - 1) * this.state.pageSize,
+      // 每页显示条数
+      limited: this.state.pageSize
+    })
       .then(resp => {
         if (this.isComponentMounted === false) {
           return;
@@ -118,6 +127,8 @@ export default class OrderList extends Component {
         if (resp.data.code === 200) {
           this.setState({
             dataSource: resp.data.data,
+            totalCount: resp.data.totalCount,
+            currentPage: resp.data.currentPage,
             isLoading: false
           })
         }
@@ -151,11 +162,25 @@ export default class OrderList extends Component {
         this.http.deleteOrderById(id)
         .then(resp => {
           if (resp.data.code === 200) {
-            this.fetchArticles()
-            message.success(resp.data.msg)
+            this.setState({
+              currentPage: 1
+            }, () => {
+              this.fetchArticles()
+              message.success(resp.data.msg)
+            })
           }
         })
       }
+    })
+  }
+
+  onTableChange = ({current, pageSize}) => {
+    const currentPage = (this.state.pageSize === pageSize) ? current : 1
+    this.setState({
+      currentPage,
+      pageSize
+    }, () => {
+      this.fetchArticles()
     })
   }
 
@@ -198,14 +223,19 @@ export default class OrderList extends Component {
           rowKey={record => record.orderid}
           dataSource={this.state.dataSource}
           columns={this.columns}
+          onChange={this.onTableChange}
           pagination={{
-            pageSize: 5,
+            pageSize: this.state.pageSize,
             // 是否可以改变 pageSize
             hideOnSinglePage: true,
             // 是否可以快速跳转至某页
             showQuickJumper: true,
+            // 数据总数
+            total: this.state.totalCount,
+            // 当前页数
+            current: this.state.currentPage,
             // 指定每页可以显示多少条
-            pageSizeOptions: ['5','10','15'],
+            pageSizeOptions: ['5','10','15','20'],
             // 是否可以改变 pageSize
             showSizeChanger: true,
             // 用于显示数据总量和当前数据顺序
