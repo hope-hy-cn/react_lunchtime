@@ -38,7 +38,7 @@ class AppFrame extends Component {
     return (
       <Layout>
         <Header className="header">
-          <div className="logo"><img src={logo} alt="logo"/><span className="logo-text">小黄牛 商品订单管理系统</span></div>
+          <div className="logo"><img src={logo} alt="logo"/><span className="logo-text">商品订单管理系统</span></div>
         </Header>
         <Layout>
           <Sider width={200} style={{ background: '#fff' }}>

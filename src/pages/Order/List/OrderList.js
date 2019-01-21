@@ -11,6 +11,8 @@ import {
   Card
 } from 'antd'
 
+import './OrderList.less'
+
 import XLSX from 'xlsx'
 
 export default class OrderList extends Component {
@@ -23,32 +25,50 @@ export default class OrderList extends Component {
     dataIndex: 'title',
     key: 'title'
   }, {
-    title: '数量（/件）',
+    title: '数量',
     dataIndex: 'amount',
     key: 'amount'
   },{ 
-    title: '总价(/元)',
+    title: '总价',
     dataIndex: 'price',
     key: 'price',
   }, {
-    title: '快递',
-    dataIndex: 'express',
-    key: 'express',
-    render: exp => {
+    title: '订单状态',
+    dataIndex: 'orderstatus',
+    key: 'orderstatus',
+    render: sta => {
       let color = ""
-      switch(exp) {
-        case '不包邮': 
+      switch(sta) {
+        case '待付款': 
           color = 'blue';
           break;
-        case '包邮':
-          color = '#f50';
+        case '已付款':
+          color = 'red';
+          break;
+        case '待发货':
+          color = 'green';
+          break;
+        case '待收货':
+          color = 'yellow';
           break;
         default:
           break;
       }
   
-      return <Tag color={color}>{exp}</Tag>
+      return <Tag color={color}>{sta}</Tag>
     }
+  }, { 
+    title: '姓名',
+    dataIndex: 'name',
+    key: 'name',
+  }, { 
+    title: '联系方式',
+    dataIndex: 'phone',
+    key: 'phone',
+  }, { 
+    title: '收货地址',
+    dataIndex: 'address',
+    key: 'address',
   }, {
     title: '添加日期',
     dataIndex: 'createAt',
@@ -60,16 +80,10 @@ export default class OrderList extends Component {
     title: '操作',
     key: 'actions',
     render: (text, record, index) => {
-      // console.log(text)
       return (
         <Button.Group size='small'>
-          <Tooltip placement="top" title="收货信息">
-            <Button type="primary">
-              <Icon type="user" />
-            </Button>
-          </Tooltip>
           <Tooltip placement="top" title="编辑">
-            <Button type="dashed" onClick={this.handleEdit.bind(this, record.orderid)}>
+            <Button type="primary" onClick={this.handleEdit.bind(this, record.orderid)}>
               <Icon type="edit" />
             </Button>
           </Tooltip>
