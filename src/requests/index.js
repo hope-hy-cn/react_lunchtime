@@ -25,3 +25,11 @@ export const fetchFinanceList = (params) => {
 export const deleteFinanceById = (id) => {
   return ajax.post(`/api/v1/finance/delete/${id}`)
 }
+
+export const fetchFinance = (id) => {
+  return ajax.post(`/api/v1/finance/${id}`)
+}
+
+export const saveFinance = (data) => {
+  return ajax.post(`/api/v1/saveFinance/save`, data)
+}

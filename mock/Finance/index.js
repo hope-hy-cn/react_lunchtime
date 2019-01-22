@@ -31,6 +31,23 @@ const financeList = ({offset=0, limited=10}) => {
   )
 }
 
+const finance = (id) => {
+  return Mock.mock({
+    "code": 200,
+    data: {
+      id,
+      "title": "@ctitle(5,8)",
+      "type|1": [
+        "收入",
+        "支出"
+      ],
+      "price|100-1000": 1,
+      "createAt": "@datetime('T')",
+      content: '<p>@cparagraph </p>'
+    }
+  })
+}
+
 router
   .post('/api/v1/financeList',(req,res) => {
     res.json(financeList(req.body))
@@ -39,6 +56,15 @@ router
     res.json({
       "code": 200,
       "msg": "删除成功!"
+    })
+  })
+  .post('/api/v1/finance/:id', (req, res) => {
+    res.json(finance(req.params.id))
+  })
+  .post('/api/v1/saveFinance/save', (req,res) => {
+    res.json({
+      "code": 200,
+      "msg": "保存成功!"
     })
   })
 

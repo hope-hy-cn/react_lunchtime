@@ -110,7 +110,7 @@ export default class FinanceList extends Component {
   }
 
   handleEdit = (id) => {
-    this.props.history.push(`/admin/jobdiary/edit/${id}`, {
+    this.props.history.push(`/admin/finance/edit/${id}`, {
       ceshichuancan: 1
     })
   }
@@ -161,7 +161,7 @@ export default class FinanceList extends Component {
     title.pop()
 
     const data = this.state.dataSource.reduce((result, item) => {
-      const row = [item.number, item.title, item.amount, item.price, item.express, item.createAt]
+      const row = [item.id, item.title, item.type, item.price, item.createAt]
       result.push(row)
       return result
     }, [])
@@ -170,7 +170,7 @@ export default class FinanceList extends Component {
     const ws = XLSX.utils.aoa_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "SheetJS");
-    XLSX.writeFile(wb, "articles.xlsx");
+    XLSX.writeFile(wb, "financeList.xlsx");
   }
 
   componentDidMount() {

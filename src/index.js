@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 
 // 设置antd语言为中文
 import zhCN from 'antd/lib/locale-provider/zh_CN'
+// 设置日期显示为中文
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+
 import {
   LocaleProvider
 } from 'antd'
@@ -23,7 +27,7 @@ import App from './App';
 import * as http from './requests'
 React.Component.prototype.http = http
 
-// import './index.less'
+moment.locale('zh-cn');
 
 ReactDOM.render(
   <LocaleProvider locale={zhCN}>
