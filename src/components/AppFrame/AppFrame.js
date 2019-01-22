@@ -15,7 +15,7 @@ import routes from '../../routes'
 
 const menus = routes.filter(route => route.isMenu === true)
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 class AppFrame extends Component {
   state = {
@@ -64,7 +64,7 @@ class AppFrame extends Component {
                 menus.map(item => {
                   return (
                     <Menu.Item key={item.path}>
-                      <Icon type="pie-chart" />
+                      <Icon type={item.iconType} />
                       <span>{item.title}</span>
                     </Menu.Item>
                   )
