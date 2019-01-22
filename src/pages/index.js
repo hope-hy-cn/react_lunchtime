@@ -1,5 +1,11 @@
 export { default as Login } from './Login/Login'
 export { default as Dashboard } from './Dashboard/Dashboard'
-export { default as OrderList } from './Order/List/OrderList'
-export { default as OrderEdit } from './Order/Edit/OrderEdit'
+export { default as JobDiaryList } from './JobDiary/List/JobDiaryList'
+export { default as JobDiaryEdit } from './JobDiary/Edit/JobDiaryEdit'
 export { default as NotFound } from './NotFound/NotFound'
+
+export { default as DepartmentList } from './Department/List/DepartmentList'
+export { default as DepartmentEdit } from './Department/Edit/DepartmentEdit'
+export { default as FinanceList } from './Finance/List/FinanceList'
+export { default as FinanceEdit } from './Finance/Edit/FinanceEdit'
+export { default as NewsList } from './News/List/NewsList'

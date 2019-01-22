@@ -1,7 +1,12 @@
 import {
   Dashboard,
-  OrderList,
-  OrderEdit
+  JobDiaryList,
+  JobDiaryEdit,
+  DepartmentList,
+  DepartmentEdit,
+  FinanceList,
+  FinanceEdit,
+  NewsList
 } from './pages'
 
 const routes = [
@@ -13,17 +18,52 @@ const routes = [
     exact: false
   },
   {
-    path: '/order/list',
-    component: OrderList,
-    title: '订单管理',
+    path: '/jobdiary/list',
+    component: JobDiaryList,
+    title: '工作日志',
     isMenu: true,
     exact: false
   },
   {
-    path: '/order/edit/:id',
-    component: OrderEdit,
-    title: '修改订单',
+    path: '/jobdiary/edit/:id',
+    component: JobDiaryEdit,
+    title: '编辑日志',
     isMenu: false,
+    exact: false
+  },
+  {
+    path: '/finance/list',
+    component: DepartmentList,
+    title: '财务管理',
+    isMenu: true,
+    exact: false
+  },
+  {
+    path: '/finance/edit/:id',
+    component: DepartmentEdit,
+    title: '账单修改',
+    isMenu: false,
+    exact: false
+  },
+  {
+    path: '/department/list',
+    component: FinanceList,
+    title: '部门管理',
+    isMenu: true,
+    exact: false
+  },
+  {
+    path: '/department/edit/:id',
+    component: FinanceEdit,
+    title: '部门修改',
+    isMenu: false,
+    exact: false
+  },
+  {
+    path: '/news/list',
+    component: NewsList,
+    title: '消息中心',
+    isMenu: true,
     exact: false
   }
 ]

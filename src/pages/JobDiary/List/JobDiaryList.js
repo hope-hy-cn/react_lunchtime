@@ -11,7 +11,7 @@ import {
   Card
 } from 'antd'
 
-import './OrderList.less'
+import './JobDiaryList.less'
 
 import XLSX from 'xlsx'
 
@@ -139,7 +139,7 @@ export default class OrderList extends Component {
   }
 
   handleEdit = (id) => {
-    this.props.history.push(`/admin/order/edit/${id}`, {
+    this.props.history.push(`/admin/jobdiary/edit/${id}`, {
       ceshichuancan: 1
     })
   }

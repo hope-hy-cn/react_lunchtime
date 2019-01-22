@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-  Layout, Menu, Icon
+  Layout, Menu, Icon,
 } from 'antd';
 
 import {
@@ -15,9 +15,18 @@ import routes from '../../routes'
 
 const menus = routes.filter(route => route.isMenu === true)
 
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 
 class AppFrame extends Component {
+  state = {
+    collapsed: false,
+  };
+
+  onCollapse = (collapsed) => {
+    console.log(collapsed);
+    this.setState({ collapsed });
+  }
+
   handleMenuClick = ({key}) => {
     // console.log(key)
     const {
@@ -27,6 +36,7 @@ class AppFrame extends Component {
 
     history.push(`${match.path}${key}`)
   }
+
   render() {
     const {
       pathname
@@ -34,21 +44,23 @@ class AppFrame extends Component {
 
     const defaultSelectedKey = pathname.split("/").slice(2).join('/')
 
-    // console.log(this.props.location.pathname.split("/").slice(2).join('/'), menus[0].path)
     return (
-      <Layout>
-        <Header className="header">
-          <div className="logo"><img src={logo} alt="logo"/><span className="logo-text">商品订单管理系统</span></div>
-        </Header>
-        <Layout>
-          <Sider width={200} style={{ background: '#fff' }}>
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={[`/${defaultSelectedKey}`]}
-              style={{ height: '100%', borderRight: 0 }}
-              onClick={this.handleMenuClick}
-            >
-              {
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider
+          collapsible
+          collapsed={this.state.collapsed}
+          onCollapse={this.onCollapse}
+        >
+          <div className="logo">
+            <img src={logo} alt="logo"/>
+          </div>
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={[`/${defaultSelectedKey}`]}
+            mode="inline"
+            onClick={this.handleMenuClick}
+          >
+            {
                 menus.map(item => {
                   return (
                     <Menu.Item key={item.path}>
@@ -58,20 +70,18 @@ class AppFrame extends Component {
                   )
                 })
               }
-            </Menu>
-          </Sider>
-          <Layout style={{ padding: '24px' }}>
-            <Content style={{
-              background: '#fff', padding: 24, margin: 0, minHeight: 280,
-            }}
-            >
-              {this.props.children}
-            </Content>
-          </Layout>
+          </Menu>
+        </Sider>
+        <Layout>
+          <Header style={{ background: '#2b3245', padding: 0 }} />
+          <Content style={{ margin: '24px 24px' }}>
+            <div style={{ padding: 24, background: '#fff', minHeight: '80vh' }}>
+            {this.props.children}
+            </div>
+          </Content>
         </Layout>
       </Layout>
-    )
+    );
   }
 }
-
 export default withRouter(AppFrame)
