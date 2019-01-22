@@ -115,7 +115,7 @@ export default class OrderList extends Component {
     this.setState({
       isLoading: true
     })
-    this.http.fetchOrderList({
+    this.http.fetchJobDiaryList({
       offset: (this.state.currentPage - 1) * this.state.pageSize,
       // 每页显示条数
       limited: this.state.pageSize
@@ -159,7 +159,7 @@ export default class OrderList extends Component {
         this.setState({
           isLoading: true
         })
-        this.http.deleteOrderById(id)
+        this.http.deleteJobDiaryById(id)
         .then(resp => {
           if (resp.data.code === 200) {
             this.setState({

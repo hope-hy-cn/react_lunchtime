@@ -4,13 +4,13 @@ const cors = require('cors')
 
 const app =express()
 
-const order = require('./order')
+const jobDiary = require('./jobDiary')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use(order)
+app.use(jobDiary)
 
 app.listen(4444, () => {
   console.log('Mock server is running on PORT 444')

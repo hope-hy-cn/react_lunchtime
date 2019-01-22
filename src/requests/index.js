@@ -2,15 +2,18 @@ import axios from 'axios'
 
 const isDev = process.env.NODE_ENV === 'development'
 const ajax = axios.create({
+  // rap2
   // baseURL: isDev ? 'http://rap2api.taobao.org/app/mock/124739' : ''
+  // hy 学校ip
   baseURL: isDev ? 'http://10.7.183.93:4444' : ''
+  // hy 家里ip
   // baseURL: isDev ? 'http://192.168.199.193:4444' : ''
 })
 
-export const fetchOrderList = (params) => {
-  return ajax.post('/api/v1/orderList', params)
+export const fetchJobDiaryList = (params) => {
+  return ajax.post('/api/v1/jobDiaryList', params)
 }
 
-export const deleteOrderById = (id) => {
-  return ajax.post(`/api/v1/order/delete/${id}`)
+export const deleteJobDiaryById = (id) => {
+  return ajax.post(`/api/v1/jobDiary/delete/${id}`)
 }

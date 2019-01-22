@@ -2,7 +2,7 @@ const { Router } = require('express')
 const Mock = require('mockjs')
 const router = new Router()
 
-const orderList = ({offset=0, limited=10}) => {
+const jobDiaryList = ({offset=0, limited=10}) => {
   const idStart = offset + 1000
   const totalCount = 50
   const currentPage = offset / limited + 1;
@@ -39,10 +39,10 @@ const orderList = ({offset=0, limited=10}) => {
 }
 
 router
-  .post('/api/v1/orderList',(req,res) => {
-    res.json(orderList(req.body))
+  .post('/api/v1/jobDiaryList',(req,res) => {
+    res.json(jobDiaryList(req.body))
   })
-  .post('/api/v1/order/delete/:id',(req,res) => {
+  .post('/api/v1/jobDiary/delete/:id',(req,res) => {
     res.json({
       "code": 200,
       "msg": "删除成功!"
