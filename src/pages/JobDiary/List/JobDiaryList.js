@@ -216,7 +216,6 @@ export default class OrderList extends Component {
       <Card
       title="订单列表"
       extra={<Button size="small" type="primary" onClick={this.exportXlsx}>导出excel</Button>}
-      bordered={false}
       >
         <Table
           loading={this.state.isLoading}

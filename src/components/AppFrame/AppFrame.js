@@ -75,7 +75,7 @@ class AppFrame extends Component {
         <Layout>
           <Header style={{ background: '#2b3245', padding: 0 }} />
           <Content style={{ margin: '24px 24px' }}>
-            <div style={{ padding: 24, background: '#fff', minHeight: '80vh' }}>
+            <div style={{background: '#fff', minHeight: '80vh' }}>
             {this.props.children}
             </div>
           </Content>
