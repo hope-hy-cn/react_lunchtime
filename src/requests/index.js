@@ -17,3 +17,11 @@ export const fetchJobDiaryList = (params) => {
 export const deleteJobDiaryById = (id) => {
   return ajax.post(`/api/v1/jobDiary/delete/${id}`)
 }
+
+export const fetchFinanceList = (params) => {
+  return ajax.post('/api/v1/financeList', params)
+}
+
+export const deleteFinanceById = (id) => {
+  return ajax.post(`/api/v1/finance/delete/${id}`)
+}

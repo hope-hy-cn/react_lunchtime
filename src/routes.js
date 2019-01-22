@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: '/finance/list',
-    component: DepartmentList,
+    component: FinanceList,
     title: '财务管理',
     iconType: 'pay-circle',
     isMenu: true,
@@ -43,14 +43,14 @@ const routes = [
   },
   {
     path: '/finance/edit/:id',
-    component: DepartmentEdit,
+    component: FinanceEdit,
     title: '账单修改',
     isMenu: false,
     exact: false
   },
   {
     path: '/department/list',
-    component: FinanceList,
+    component: DepartmentList,
     title: '部门管理',
     iconType: 'team',
     isMenu: true,
@@ -58,7 +58,7 @@ const routes = [
   },
   {
     path: '/department/edit/:id',
-    component: FinanceEdit,
+    component: DepartmentEdit,
     title: '部门修改',
     isMenu: false,
     exact: false
