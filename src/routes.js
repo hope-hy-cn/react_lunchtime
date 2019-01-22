@@ -14,6 +14,7 @@ const routes = [
     path: '/dashboard',
     component: Dashboard,
     title: '管理首页',
+    iconType: 'user',
     isMenu: true,
     exact: false
   },
@@ -21,6 +22,7 @@ const routes = [
     path: '/jobdiary/list',
     component: JobDiaryList,
     title: '工作日志',
+    iconType: 'read',
     isMenu: true,
     exact: false
   },
@@ -35,6 +37,7 @@ const routes = [
     path: '/finance/list',
     component: DepartmentList,
     title: '财务管理',
+    iconType: 'pay-circle',
     isMenu: true,
     exact: false
   },
@@ -49,6 +52,7 @@ const routes = [
     path: '/department/list',
     component: FinanceList,
     title: '部门管理',
+    iconType: 'team',
     isMenu: true,
     exact: false
   },
@@ -63,6 +67,7 @@ const routes = [
     path: '/news/list',
     component: NewsList,
     title: '消息中心',
+    iconType: 'mail',
     isMenu: true,
     exact: false
   }
