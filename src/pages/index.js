@@ -3,6 +3,7 @@ export { default as Dashboard } from './Dashboard/Dashboard'
 export { default as JobDiaryList } from './JobDiary/List/JobDiaryList'
 export { default as JobDiaryEdit } from './JobDiary/Edit/JobDiaryEdit'
 export { default as NotFound } from './NotFound/NotFound'
+export { default as Notification } from './Notification/Notification'
 
 export { default as DepartmentList } from './Department/List/DepartmentList'
 export { default as DepartmentEdit } from './Department/Edit/DepartmentEdit'

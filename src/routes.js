@@ -6,7 +6,8 @@ import {
   DepartmentEdit,
   FinanceList,
   FinanceEdit,
-  NewsList
+  NewsList,
+  Notification
 } from './pages'
 
 const routes = [
@@ -69,6 +70,13 @@ const routes = [
     title: '消息中心',
     iconType: 'mail',
     isMenu: true,
+    exact: false
+  },
+  {
+    path: '/notification',
+    component: Notification,
+    title: '未处理消息',
+    isMenu: false,
     exact: false
   }
 ]
